@@ -1,33 +1,35 @@
 ﻿// Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечётных позициях.
 int[] numbers = new int[10];
 
-void FillArray(int[] array, int min, int max){
+void fillArray(int[] array){
   for (int i = 0; i<array.Length; i++ ){
-    array[i] = new Random().Next(min, max);
+    array[i] = new Random().Next();
   }
 }
 
-void WriteArray(int[] array){
+void writeArray(int[] array){
     for (int i = 0; i<array.Length; i++ ){
     Console.Write(array[i] + " ");
   }
   Console.WriteLine();
 }
 
-int QuantitySum(int[] array){
+int quantitySum(int[] array){
     int quantity = 0;
+    int sum = 0;
     for (int i = 0; i<array.Length; i++ ){
-    if (array[i] % 2 == 0)
+    if (array[i] % 2 == 1)
     {
+      sum = sum + array[i];
       quantity++;
     }
   }
-  return quantity;
+  return sum;
 }
 
-FillArray(numbers, 100, 1000);
-WriteArray(numbers);
+fillArray(numbers);
+writeArray(numbers);
 Console.WriteLine();
 
-int quantity = QuantityPositive(numbers);
-Console.WriteLine($"Количество чётных чисел в массиве: {quantity}");
+int sum = quantitySum(numbers);
+Console.WriteLine($"Сумма нечётных: {sum}");
